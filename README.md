@@ -1,7 +1,7 @@
 # BlazorBookApp
 A Blazor WebAssembly app with .NET backend that allows users to:
 
-Search books by title using Google Books API v1.
+Search books by title using [Google Books API v1](https://developers.google.com/books/docs/v1/using).
 View details such as cover, description, and subjects.
 Keep track of the 5 most recent searches.
 Includes unit tests for services and UI components with xUnit, bUnit, and Moq.
