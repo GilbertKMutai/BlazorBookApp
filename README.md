@@ -44,7 +44,7 @@ BlazorBookApp.sln
  - BlazorBookApp.Client.BUnitTests - *Component tests with bUnit*
 
 # NOTES
-- Uses [Google Books API v1](google.com/url?q=https://developers.google.com/books/docs/v1/using&source=gmail&ust=1756880716138000&usg=AOvVaw00B6ciITTcLp4fNBRgXbaU) for book search and details.
+- Uses [Google Books API v1](google.com/url?q=https://developers.google.com/books/docs/v1/) for book search and details.
 - Recent searches are stored locally.
 - Gracefully handles empty queries, network issues, and API errors.
 - Unit tests cover both business logic and UI components.
