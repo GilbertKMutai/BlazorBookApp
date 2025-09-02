@@ -17,7 +17,7 @@ Tech Stack
 
 # Setup Instructions
 # Prerequisites
-- .NET 8 SDK installed
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
 
 
 # Run the App
@@ -31,6 +31,7 @@ BlazorBookApp.sln
  - BlazorBookApp.Client            # Blazor WebAssembly (UI)
  - BlazorBookApp.Server            # ASP.NET Core API
  - BlazorBookApp.Shared            # Shared DTOs & Models
+   
  - BlazorBookApp.Server.Tests      # Unit tests for services and controller
  - BlazorBookApp.Shared.Tests      # Unit tests for result pattern
  - BlazorBookApp.Client.Tests      # Unit tests for services
