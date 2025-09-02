@@ -56,7 +56,7 @@ public class BookDetailsItemTests : TestContext
         );
 
         // Assert
-        Assert.NotNull(cut.Find(".book-cover-placeholder-large"));
+        Assert.NotNull(cut.Find(".book-cover-placeholder"));
     }
 
     [Fact]
