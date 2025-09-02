@@ -9,15 +9,15 @@ Includes unit tests for services and UI components with xUnit, bUnit, and Moq.
 Tech Stack
 
 .NET 8.0
-Blazor WebAssembly (Client)
-ASP.NET Core Web API (Server)
-Google Books API v1 (Data source)
-xUnit + bUnit + Moq (Testing)
+- Blazor WebAssembly (Client)
+- ASP.NET Core Web API (Server)
+- Google Books API v1 (Data source)
+- xUnit + bUnit + Moq (Testing)
 
 
 # Setup Instructions
 # Prerequisites
-.NET 8 SDK installed
+- .NET 8 SDK installed
 
 
 # Run the App
