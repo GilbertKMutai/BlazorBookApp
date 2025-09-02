@@ -1,0 +1,51 @@
+# BlazorBookApp
+A Blazor WebAssembly app with .NET backend that allows users to:
+
+Search books by title using [Google Books API v1](https://developers.google.com/books/docs/v1/using).
+View details such as cover, description, and subjects.
+Keep track of the 5 most recent searches.
+Includes unit tests for services and UI components with xUnit, bUnit, and Moq.
+
+Tech Stack
+
+.NET 8.0
+- Blazor WebAssembly (Client)
+- ASP.NET Core Web API (Server)
+- Google Books API v1 (Data source)
+- xUnit + bUnit + Moq (Testing)
+
+
+# Setup Instructions
+# Prerequisites
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
+- A code editor like [Visual Studio Code](https://code.visualstudio.com/download) or IDE like [Visual Studio](https://visualstudio.microsoft.com/vs/community/)
+
+# Run the App
+1. Clone or download the project.
+1. Open the project in your code editor or IDE.
+1. dotnet build
+1. dotnet run --project BlazorBookApp.Server
+-For Visual Studio, set BlazorBookApp.Server as the startup project. You do this by right clicking `BlazorBookApp.Server` in the solution explorer, in the dropdown, click set as `Set As Startup Project`. Then you can run the project
+
+App will be available at: https://localhost:7165
+
+# Project Structure
+
+There are seven projects present inside the repo:
+
+BlazorBookApp.sln
+ - BlazorBookApp.Client            - *Blazor WebAssembly (UI)*
+ - BlazorBookApp.Server            - *ASP.NET Core API*
+ - BlazorBookApp.Shared            - *Shared DTOs & Models <br><br>*
+
+   
+ - BlazorBookApp.Server.Tests      - *Unit tests for services and controller*
+ - BlazorBookApp.Shared.Tests      - *Unit tests for result pattern*
+ - BlazorBookApp.Client.Tests      - *Unit tests for services*
+ - BlazorBookApp.Client.BUnitTests - *Component tests with bUnit*
+
+# NOTES
+- Uses [Google Books API v1](https://developers.google.com/books/docs/v1/using) for book search and details.
+- Recent searches are stored locally.
+- Gracefully handles empty queries, network issues, and API errors.
+- Unit tests cover both business logic and UI components.
