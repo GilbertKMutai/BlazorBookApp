@@ -18,6 +18,7 @@ Tech Stack
 # Setup Instructions
 # Prerequisites
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
+- A code editor like [Visual Studio Code](https://code.visualstudio.com/download) or IDE like [Visual Studio](https://visualstudio.microsoft.com/vs/community/)
 
 
 # Run the App
