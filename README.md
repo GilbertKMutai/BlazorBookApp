@@ -28,6 +28,9 @@ dotnet run --project BlazorBookApp.Server
 App will be available at: https://localhost:7165
 
 # Project Structure
+
+There are seven projects present inside the repo:
+
 BlazorBookApp.sln
  - BlazorBookApp.Client            # Blazor WebAssembly (UI)
  - BlazorBookApp.Server            # ASP.NET Core API
