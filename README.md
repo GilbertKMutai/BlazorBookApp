@@ -22,8 +22,10 @@ Tech Stack
 
 
 # Run the App
-dotnet build
-dotnet run --project BlazorBookApp.Server
+1. Clone or download the project.
+1. Open the project in your code editor or IDE.
+1. dotnet build
+1. dotnet run --project BlazorBookApp.Server
 
 App will be available at: https://localhost:7165
 
