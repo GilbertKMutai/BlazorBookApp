@@ -1,0 +1,67 @@
+﻿@inherits SearchBarBase
+
+<div class="search-bar-container">
+
+    @if (ShouldShowSuggestions && RecentSearches?.Count > 0)
+    {
+        <div class="suggestions-overlay" @onclick="HideSuggestions"></div>
+    }
+
+    <div class="input-group">
+        <input @ref="searchInput"
+               @bind="Query"
+               @bind:event="oninput"
+               @onkeydown="HandleKeyDown"
+               @onclick="ShowSuggestions"
+               @onfocus="HandleInputFocus"
+               type="text"
+               class="form-control"
+               placeholder="Search book title..."
+               aria-label="Book title search"
+               aria-describedby="search-button" />
+        <button @onclick="DoSearch"
+                class="btn btn-primary"
+                type="button"
+                id="search-button"
+                aria-label="Search for books">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span class="sr-only">Search</span>
+        </button>
+    </div>
+
+    @if (ShouldShowSuggestions && RecentSearches?.Count > 0)
+    {
+        <div class="suggestions-container">
+            <ul class="suggestions-list" role="listbox">
+                <li class="suggestions-header">
+                    <span>Recent Searches</span>
+                    <button @onclick="ClearRecentSearches" class="btn-clear" aria-label="Clear search history">
+                        <svg class="trash-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                    </button>
+                </li>
+                @for (int i = 0; i < RecentSearches.Count; i++)
+                {
+                    var search = RecentSearches[i];
+                    <li @onclick="() => SelectSuggestion(search)"
+                        @onkeydown="@((e) => HandleRecentSearchKeydown(e, search))"
+                        tabindex="0"
+                        role="option"
+                        aria-selected="@(i == SelectedSuggestionIndex)"
+                        class="@GetSuggestionClass(i)">
+                        <svg class="history-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        @search
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

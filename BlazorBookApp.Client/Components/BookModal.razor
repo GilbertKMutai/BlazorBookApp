@@ -1,0 +1,118 @@
+﻿@inherits BookModalBase
+
+<div class="@(IsVisible ? "modal-overlay visible" : "modal-overlay")" @onclick="CloseModal">
+    <div class="modal-content" @onclick:stopPropagation>
+        <div class="modal-header">
+            <h2>@CurrentBook?.Title</h2>
+            <button @onclick="CloseModal" class="close-button" aria-label="Close modal">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            @if (Error != null)
+            {
+                <div class="error-container">
+                    <i class="fas fa-exclamation-triangle error-icon"></i>
+                    <h3 class="error-title">Something went wrong</h3>
+                    <p class="error-message">@Error</p>
+                    <button @onclick="ClearError" class="btn btn-primary error-retry-btn">
+                        Try Again
+                    </button>
+                </div>
+            }
+            else if (CurrentBook != null)
+            {
+                <div class="book-poster">
+                    @if (CurrentBook.CoverUrls?.Length > 0)
+                    {
+                        <img src="@CurrentBook.CoverUrls[0]"
+                             alt="@CurrentBook.Title cover"
+                             loading="lazy"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="poster-placeholder poster-placeholder-hidden">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="poster-placeholder">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </div>
+                    }
+                </div>
+
+                <div class="book-details">
+                    @if (CurrentBook.AverageRating.HasValue)
+                    {
+                        <div class="detail-group">
+                            <h3>Rating</h3>
+                            <div class="rating-display">
+                                <div class="stars">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <span class="star @(i <= Math.Round(CurrentBook.AverageRating.Value) ? "filled" : "")">⭐</span>
+                                    }
+                                </div>
+                                <span class="rating-text">
+                                    @CurrentBook.AverageRating.Value.ToString("0.0")/5
+                                    (@(CurrentBook.RatingsCount?.ToString() ?? "0") reviews)
+                                </span>
+                            </div>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(CurrentBook.Description))
+                    {
+                        <div class="detail-group">
+                            <h3>Description</h3>
+                            <div class="description-text">
+                                @((MarkupString)CurrentBook.Description)
+                            </div>
+                        </div>
+                    }
+
+                    @if (CurrentBook.Subjects?.Length > 0)
+                    {
+                        <div class="detail-group">
+                            <h3>Subjects</h3>
+                            <div class="subject-tags">
+                                @foreach (var subject in CurrentBook.Subjects.Take(8))
+                                {
+                                    <span class="subject-tag">@subject</span>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    <div class="detail-group">
+                        <h3>Additional Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Work ID:</span>
+                                <span class="info-value">@CurrentBook.WorkId</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Source:</span>
+                                <span class="info-value">Google Books API</span>
+                            </div>
+                            @if (CurrentBook.CoverUrls?.Length > 0)
+                            {
+                                <div class="info-item">
+                                    <span class="info-label">Images:</span>
+                                    <span class="info-value">@CurrentBook.CoverUrls.Length available</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="modal-footer">
+            <button @onclick="CloseModal" class="btn btn-primary">
+                Close
+            </button>
+        </div>
+    </div>
+</div>

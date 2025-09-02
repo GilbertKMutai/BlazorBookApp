@@ -1,0 +1,62 @@
+﻿@inherits BookDetailsItemBase
+
+@if (Item == null)
+{
+    <div class="empty-state">
+        <i class="fas fa-book-open" aria-hidden="true"></i>
+        <h3>Select a book to see details</h3>
+    </div>
+}
+else
+{
+    <div class="book-details-container">
+        <div class="book-details-header">
+            <h2>@Item.Title</h2>
+            <button @onclick="OnClose" class="btn-close" aria-label="Close details">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="book-details-content">
+            <div class="book-cover-container">
+                @if (Item.CoverIds?.Length > 0)
+                {
+                    <div class="book-cover-frame">
+                        <img src=@($"https://covers.openlibrary.org/b/id/{Item.CoverIds[0]}-L.jpg")
+                             alt="@Item.Title cover"
+                             loading="lazy" />
+                    </div>
+                }
+                else
+                {
+                    <div class="book-cover-frame book-cover-placeholder">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </div>
+                }
+            </div>
+
+            <div class="book-info">
+                @if (!string.IsNullOrEmpty(Item.Description))
+                {
+                    <div class="book-description">
+                        <h4>Description</h4>
+                        <p>@Item.Description</p>
+                    </div>
+                }
+
+                @if (Item.Subjects?.Length > 0)
+                {
+                    <div class="book-subjects">
+                        <h4>Subjects</h4>
+                        <div class="subject-tags">
+                            @foreach (var subject in Item.Subjects.Take(10))
+                            {
+                                <span class="subject-tag">@subject</span>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

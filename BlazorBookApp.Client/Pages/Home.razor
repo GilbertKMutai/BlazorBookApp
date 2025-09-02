@@ -1,0 +1,57 @@
+﻿@page "/"
+@inherits HomeBase
+
+<PageTitle>Book Explorer</PageTitle>
+
+<div class="page-container">
+    <header class="page-header">
+        <h1>Book Explorer</h1>
+        <p>Discover your next favorite book</p>
+    </header>
+
+    <SearchBar OnSearch="OnSearch" />
+
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            <i class="fas fa-exclamation-circle me-2" aria-hidden="true"></i>
+            @ErrorMessage
+        </div>
+    }
+
+    @if (IsLoading)
+    {
+        <div class="search-state">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+            <h3>Searching for books...</h3>
+        </div>
+    }
+    else if (Results == null)
+    {
+        <div class="search-state">
+            <div class="placeholder-illustration">
+                <i class="fas fa-search" aria-hidden="true"></i>
+            </div>
+            <h3>Search for Books</h3>
+            <p>Enter a book title to begin your search</p>
+        </div>
+    }
+    else if (Results.Length == 0)
+    {
+        <div class="search-state">
+            <div class="placeholder-illustration">
+                <i class="fas fa-book" aria-hidden="true"></i>
+            </div>
+            <h3>No Books Found</h3>
+            <p>Try a different search term</p>
+        </div>
+    }
+    else
+    {
+        <SearchResult Items="Results" OnSelect="ShowDetails" />
+    }
+
+    <BookModal />
+</div>

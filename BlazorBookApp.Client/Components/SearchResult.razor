@@ -1,0 +1,65 @@
+﻿@inherits SearchResultBase
+
+<div class="books-grid">
+    @foreach (var book in Items)
+    {
+        <div class="book-card" @onclick="() => OnSelect.InvokeAsync(book)" tabindex="0" role="button">
+            <div class="book-cover">
+                @if (!string.IsNullOrEmpty(book.CoverUrl))
+                {
+                    <img src="@book.CoverUrl" alt="@book.Title cover" loading="lazy" />
+                }
+                else if (book.CoverId.HasValue)
+                {
+                    <img src="@($"https://covers.openlibrary.org/b/id/{book.CoverId}-M.jpg")"
+                         alt="@book.Title cover" loading="lazy" />
+                }
+                else
+                {
+                    <div class="book-cover-placeholder">
+                        <i class="fas fa-book" aria-hidden="true"></i>
+                    </div>
+                }
+            </div>
+
+            <div class="book-details">
+                <h3 class="book-title">@book.Title</h3>
+
+                <p class="book-author">
+                    @if (book.Authors.Length > 0)
+                    {
+                        <text>By @string.Join(", ", book.Authors)</text>
+                    }
+                    else
+                    {
+                        <text>Unknown Author</text>
+                    }
+                </p>
+
+                @if (book.FirstPublishYear.HasValue)
+                {
+                    <p class="book-year">Published: @book.FirstPublishYear</p>
+                }
+
+                @if (book.AverageRating.HasValue)
+                {
+                    <div class="book-rating">
+                        <div class="stars">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <span class="star @(i <= Math.Round(book.AverageRating.Value) ? "filled" : "")">⭐</span>
+                            }
+                        </div>
+                        <span class="rating-text">
+                            @book.AverageRating.Value.ToString("0.0") (@(book.RatingsCount ?? 0) reviews)
+                        </span>
+                    </div>
+                }
+
+                <button class="btn-details" aria-label="View details for @book.Title">
+                    View Details
+                </button>
+            </div>
+        </div>
+    }
+</div>
