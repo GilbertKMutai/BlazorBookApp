@@ -34,15 +34,15 @@ App will be available at: https://localhost:7165
 There are seven projects present inside the repo:
 
 BlazorBookApp.sln
- - BlazorBookApp.Client            # *Blazor WebAssembly (UI)*
- - BlazorBookApp.Server            # *ASP.NET Core API*
- - BlazorBookApp.Shared            # *Shared DTOs & Models <br><br>*
+ - BlazorBookApp.Client            # *Blazor WebAssembly (UI)
+ - BlazorBookApp.Server            # *ASP.NET Core API
+ - BlazorBookApp.Shared            # *Shared DTOs & Models <br><br>
 
    
- - BlazorBookApp.Server.Tests      *Unit tests for services and controller*
- - BlazorBookApp.Shared.Tests      *Unit tests for result pattern*
- - BlazorBookApp.Client.Tests      *Unit tests for services*
- - BlazorBookApp.Client.BUnitTests *Component tests with bUnit*
+ - BlazorBookApp.Server.Tests      # *Unit tests for services and controller
+ - BlazorBookApp.Shared.Tests      # *Unit tests for result pattern
+ - BlazorBookApp.Client.Tests      # *Unit tests for services
+ - BlazorBookApp.Client.BUnitTests # *Component tests with bUnit
 
 # NOTES
 - Uses Google Books API v1 for book search and details.
