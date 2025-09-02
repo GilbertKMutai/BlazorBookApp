@@ -24,7 +24,7 @@ Tech Stack
 1. Clone or download the project.
 1. Open the project in your code editor or IDE.
 1. dotnet build
-1. dotnet run --project BlazorBookApp.Server
+1. dotnet run --project BlazorBookApp.Server <br>
 -For Visual Studio, set BlazorBookApp.Server as the startup project. You do this by right clicking `BlazorBookApp.Server` in the solution explorer, in the dropdown, click set as `Set As Startup Project`. Then you can run the project
 
 App will be available at: https://localhost:7165
