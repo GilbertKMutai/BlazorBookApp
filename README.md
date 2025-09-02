@@ -34,7 +34,7 @@ App will be available at: https://localhost:7165
 There are seven projects present inside the repo:
 
 BlazorBookApp.sln
- - BlazorBookApp.Client            > Blazor WebAssembly (UI)
+ - BlazorBookApp.Client            >Blazor WebAssembly (UI)
  - BlazorBookApp.Server            # ASP.NET Core API
  - BlazorBookApp.Shared            # Shared DTOs & Models <br><br>
 
