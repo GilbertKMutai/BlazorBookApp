@@ -1,4 +1,4 @@
-#BlazorBookApp
+# BlazorBookApp
 A Blazor WebAssembly app with .NET backend that allows users to:
 
 Search books by title using Google Books API v1.
@@ -15,19 +15,18 @@ Google Books API v1 (Data source)
 xUnit + bUnit + Moq (Testing)
 
 
-#Setup Instructions
-#Prerequisites
-
+# Setup Instructions
+# Prerequisites
 .NET 8 SDK installed
 
 
-#Run the App
+# Run the App
 dotnet build
 dotnet run --project BlazorBookApp.Server
 
 App will be available at: https://localhost:7165
 
-Project Structure
+# Project Structure
 BlazorBookApp.sln
  - BlazorBookApp.Client            # Blazor WebAssembly (UI)
  - BlazorBookApp.Server            # ASP.NET Core API
@@ -35,7 +34,7 @@ BlazorBookApp.sln
  - BlazorBookApp.Client.Tests      # Unit tests for services
  - BlazorBookApp.Client.BUnitTests # Component tests with bUnit
 
-#NOTES
+# NOTES
 -Uses Google Books API v1 for book search and details.
 -Recent searches are stored locally.
 -Gracefully handles empty queries, network issues, and API errors.
